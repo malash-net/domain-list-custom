@@ -48,6 +48,11 @@ jobs:
           echo "include:geolocation-!cn @cn" >> ./domain-list-community/data/cn
           echo "include:geolocation-cn @!cn" >> ./domain-list-community/data/geolocation-\!cn
 
+      - name: Remove custom domains
+        if: ${{ env.NeedToSync }}
+        run: |
+          sed -i '/^z\.ai$/d' ./domain-list-community/data/category-ai-cn
+
       - name: Get dependencies and run
         if: ${{ env.NeedToSync }}
         run: |
