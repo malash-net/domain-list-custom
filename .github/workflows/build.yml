@@ -52,6 +52,7 @@ jobs:
         if: ${{ env.NeedToSync }}
         run: |
           sed -i '/^z\.ai$/d' ./domain-list-community/data/category-ai-cn
+          sed -i 's/ @cn$//' ./domain-list-community/data/google
 
       - name: Get dependencies and run
         if: ${{ env.NeedToSync }}
